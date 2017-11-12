@@ -1,5 +1,6 @@
 package com.nyc.favoritefood;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String SHARED_PREFS_KEY = "sharedPrefs";
     private TextView logo;
-    private EditText favorite_food, guess_food;
-    private Button submit_food, submit_guess;
+    private EditText favorite_food;
+    private Button submit_food, guess;
     private SharedPreferences login;
 
     @Override
@@ -23,9 +24,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         logo = (TextView) findViewById(R.id.logo);
         favorite_food = (EditText) findViewById(R.id.favorite_food);
-        guess_food = (EditText) findViewById(R.id.guess_food);
         submit_food = (Button) findViewById(R.id.submit_food);
-        submit_guess = (Button) findViewById(R.id.submit_guess);
+        guess = (Button) findViewById(R.id.guess);
 
         login = getApplicationContext().getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
         submit_food.setOnClickListener(new View.OnClickListener() {
@@ -39,20 +39,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        submit_guess.setOnClickListener(new View.OnClickListener() {
+        guess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String checkFood = "favorite food" + guess_food.getText().toString();
-                if (guess_food.getText().toString().equalsIgnoreCase(login.getString(checkFood,null))) {
-                    Toast.makeText(getApplicationContext(), guess_food.getText().toString() + " was in there!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), guess_food.getText().toString() + " was not in there!", Toast.LENGTH_SHORT).show();
 
-                }
-                guess_food.setText(null);
-
+                Intent intent = new Intent(MainActivity.this,GuessActivity.class);
+                intent.putExtra("pref_key",SHARED_PREFS_KEY);
+                startActivity(intent);
             }
         });
+
+
 
     }
 }
