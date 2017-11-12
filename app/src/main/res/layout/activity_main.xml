@@ -26,14 +26,6 @@
         android:textColorHint="#ffffff"
         android:textColor="#ffffff"
         android:gravity="center"/>
-    <EditText
-        android:id="@+id/guess_food"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Guess the food entered here ..."
-        android:textColorHint="#ffffff"
-        android:textColor="#ffffff"
-        android:gravity="center"/>
     <Button
         android:id="@+id/submit_food"
         android:layout_width="wrap_content"
@@ -43,10 +35,10 @@
         android:background="#ffffff"
         android:layout_gravity="center"/>
     <Button
-        android:id="@+id/submit_guess"
+        android:id="@+id/guess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit the guess"
+        android:text="Start the guess game"
         android:textColor="#000000"
         android:background="#ffffff"
         android:layout_gravity="center"/>
